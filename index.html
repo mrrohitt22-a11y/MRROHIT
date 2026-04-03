@@ -391,7 +391,144 @@
         
         .nav-cta {
             padding: 12px 28px;
-            font-size: 14px;
+            font-size: 15px;
+            font-weight: 900 !important;
+            letter-spacing: 0.5px;
+            color: #0D0D1A !important;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.08);
+            -webkit-text-fill-color: #0D0D1A !important;
+            background: linear-gradient(135deg, #FFE3A3 0%, #FD9B67 100%) !important;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(253, 155, 103, 0.4) !important;
+            overflow: visible;
+            transition: transform 0.15s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.5), 0 0 15px rgba(255, 165, 0, 0.3) !important;
+        }
+
+        /* Golden side-burst rays — left */
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -6px;
+            width: 30px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #FFD700, #FFA500, transparent);
+            border-radius: 4px;
+            transform: translateY(-50%) scaleX(0);
+            transform-origin: right center;
+            opacity: 0;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(0.5px);
+        }
+
+        /* Golden side-burst rays — right */
+        .nav-cta::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -6px;
+            width: 30px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #FFA500, #FFD700, transparent);
+            border-radius: 4px;
+            transform: translateY(-50%) scaleX(0);
+            transform-origin: left center;
+            opacity: 0;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(0.5px);
+        }
+
+        /* Click/tap active state */
+        .nav-cta:active {
+            transform: scale(0.94);
+        }
+
+        /* Golden burst class — triggered by JS */
+        .nav-cta.golden-burst {
+            animation: hireMePulse 0.7s ease-out;
+        }
+
+        .nav-cta.golden-burst::before {
+            animation: rayBurstLeft 0.7s ease-out forwards;
+        }
+
+        .nav-cta.golden-burst::after {
+            animation: rayBurstRight 0.7s ease-out forwards;
+        }
+
+        @keyframes hireMePulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.6), 0 0 0 0 rgba(255, 165, 0, 0.4) !important;
+            }
+            30% {
+                box-shadow: 0 0 20px 8px rgba(255, 215, 0, 0.7), 0 0 40px 15px rgba(255, 165, 0, 0.35) !important;
+            }
+            100% {
+                box-shadow: 0 4px 15px rgba(253, 155, 103, 0.4) !important;
+            }
+        }
+
+        @keyframes rayBurstLeft {
+            0% {
+                transform: translateY(-50%) scaleX(0) translateX(0);
+                opacity: 1;
+                width: 30px;
+            }
+            40% {
+                transform: translateY(-50%) scaleX(2.5) translateX(-15px);
+                opacity: 1;
+                width: 40px;
+            }
+            100% {
+                transform: translateY(-50%) scaleX(3) translateX(-30px);
+                opacity: 0;
+                width: 50px;
+            }
+        }
+
+        @keyframes rayBurstRight {
+            0% {
+                transform: translateY(-50%) scaleX(0) translateX(0);
+                opacity: 1;
+                width: 30px;
+            }
+            40% {
+                transform: translateY(-50%) scaleX(2.5) translateX(15px);
+                opacity: 1;
+                width: 40px;
+            }
+            100% {
+                transform: translateY(-50%) scaleX(3) translateX(30px);
+                opacity: 0;
+                width: 50px;
+            }
+        }
+
+        /* Golden sparkle particles */
+        .golden-sparkle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 50%;
+            animation: sparkleFloat 0.8s ease-out forwards;
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--sx), var(--sy)) scale(0);
+            }
         }
         
         .mobile-menu-btn {
@@ -2656,9 +2793,8 @@
                         </a>
                     </div>
                     <div class="social-links" style="margin-top:24px;">
-                        <a href="https://linkedin.com/in/rohit" target="_blank" class="social-link sl-linkedin" aria-label="LinkedIn">in</a>
-                        <a href="https://instagram.com/rohit" target="_blank" class="social-link sl-instagram" aria-label="Instagram">📷</a>
-                        <a href="https://twitter.com/rohit" target="_blank" class="social-link sl-twitter" aria-label="Twitter">𝕏</a>
+                        <a href="https://www.linkedin.com/in/mr-rohit-52b4b32a6/" target="_blank" class="social-link sl-linkedin" aria-label="LinkedIn">in</a>
+                        <a href="https://www.instagram.com/rohitwith.io/" target="_blank" class="social-link sl-instagram" aria-label="Instagram">📷</a>
                         <a href="https://github.com/mrrohitt22-a11y" target="_blank" class="social-link sl-github" aria-label="GitHub">⌨</a>
                     </div>
                 </div>
@@ -2715,9 +2851,8 @@
             <div class="footer-content">
                 <span class="footer-logo">Rohit.</span>
                 <div class="social-links">
-                    <a href="https://linkedin.com/in/rohit" target="_blank" class="social-link sl-linkedin" aria-label="LinkedIn">in</a>
-                    <a href="https://instagram.com/rohit" target="_blank" class="social-link sl-instagram" aria-label="Instagram">📷</a>
-                    <a href="https://twitter.com/rohit" target="_blank" class="social-link sl-twitter" aria-label="Twitter">𝕏</a>
+                    <a href="https://www.linkedin.com/in/mr-rohit-52b4b32a6/" target="_blank" class="social-link sl-linkedin" aria-label="LinkedIn">in</a>
+                    <a href="https://www.instagram.com/rohitwith.io/" target="_blank" class="social-link sl-instagram" aria-label="Instagram">📷</a>
                     <a href="https://github.com/mrrohitt22-a11y" target="_blank" class="social-link sl-github" aria-label="GitHub">⌨</a>
                 </div>
                 <p class="footer-location">Ballabhgarh, Faridabad, Haryana · Delhi NCR</p>
@@ -3072,6 +3207,79 @@
                 el.textContent = el.dataset[lang];
             });
         }
+        // ============================================
+        // HIRE ME GOLDEN BURST EFFECT
+        // ============================================
+        (function() {
+            const hireMeBtn = document.querySelector('.nav-cta');
+            if (!hireMeBtn) return;
+
+            function createSparkles(btn) {
+                const rect = btn.getBoundingClientRect();
+                const colors = ['#FFD700', '#FFA500', '#FFEC8B', '#FFB347', '#FFF8DC', '#F0E68C'];
+                const particleCount = 18;
+
+                for (let i = 0; i < particleCount; i++) {
+                    const spark = document.createElement('div');
+                    spark.classList.add('golden-sparkle');
+
+                    const size = Math.random() * 6 + 3;
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+
+                    // Position sparkles from the left or right side of the button
+                    const fromLeft = i < particleCount / 2;
+                    const startX = fromLeft ? rect.left - 2 : rect.right + 2;
+                    const startY = rect.top + rect.height / 2 + (Math.random() - 0.5) * rect.height * 0.8;
+
+                    // Fly outward from the sides
+                    const moveX = fromLeft ? -(Math.random() * 60 + 20) : (Math.random() * 60 + 20);
+                    const moveY = (Math.random() - 0.5) * 80;
+
+                    spark.style.cssText = `
+                        width: ${size}px;
+                        height: ${size}px;
+                        background: radial-gradient(circle, ${color} 0%, transparent 70%);
+                        box-shadow: 0 0 ${size * 2}px ${color}, 0 0 ${size * 4}px ${color}40;
+                        left: ${startX}px;
+                        top: ${startY}px;
+                        position: fixed;
+                        --sx: ${moveX}px;
+                        --sy: ${moveY}px;
+                        animation-delay: ${Math.random() * 0.15}s;
+                        animation-duration: ${0.6 + Math.random() * 0.4}s;
+                    `;
+
+                    document.body.appendChild(spark);
+                    setTimeout(() => spark.remove(), 1200);
+                }
+            }
+
+            hireMeBtn.addEventListener('click', function(e) {
+                // Remove class to allow re-trigger
+                this.classList.remove('golden-burst');
+                void this.offsetWidth; // Force reflow
+                this.classList.add('golden-burst');
+
+                // Spawn golden sparkle particles from both sides
+                createSparkles(this);
+
+                // Clean up class after animation
+                setTimeout(() => {
+                    this.classList.remove('golden-burst');
+                }, 800);
+            });
+
+            // Also trigger on touch for mobile
+            hireMeBtn.addEventListener('touchstart', function(e) {
+                this.classList.remove('golden-burst');
+                void this.offsetWidth;
+                this.classList.add('golden-burst');
+                createSparkles(this);
+                setTimeout(() => {
+                    this.classList.remove('golden-burst');
+                }, 800);
+            }, { passive: true });
+        })();
     </script>
 </body>
 </html>

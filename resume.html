@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rohit — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f13;
+    --sidebar: #16161e;
+    --accent: #c8a96e;
+    --accent2: #e8c87a;
+    --text: #e8e6e1;
+    --muted: #9a9490;
+    --divider: #2a2a36;
+    --tag-bg: #1e1e2a;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+  }
+
+  .resume {
+    width: 900px;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 270px 1fr;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(200,169,110,0.12);
+    animation: fadeUp 0.7s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- SIDEBAR ---- */
+  .sidebar {
+    background: var(--sidebar);
+    padding: 44px 28px;
+    border-right: 1px solid var(--divider);
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .avatar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c8a96e 0%, #8b6914 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #0f0f13;
+    letter-spacing: 1px;
+    box-shadow: 0 0 0 4px rgba(200,169,110,0.2);
+  }
+
+  .name-title {
+    text-align: center;
+  }
+
+  .name-title h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+  }
+
+  .name-title .tagline {
+    font-size: 10.5px;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .contact-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .contact-item .icon {
+    color: var(--accent);
+    font-size: 14px;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  .contact-item a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    word-break: break-all;
+  }
+  .contact-item a:hover { color: var(--accent); }
+
+  .s-section { display: flex; flex-direction: column; gap: 10px; }
+
+  .s-label {
+    font-size: 9.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    border-bottom: 1px solid var(--divider);
+    padding-bottom: 8px;
+    margin-bottom: 2px;
+  }
+
+  .tag-list { display: flex; flex-wrap: wrap; gap: 7px; }
+
+  .tag {
+    background: var(--tag-bg);
+    border: 1px solid rgba(200,169,110,0.18);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+  .tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  .tool-item {
+    font-size: 12.5px;
+    color: var(--muted);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tool-item::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ---- MAIN ---- */
+  .main {
+    background: var(--bg);
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .main-header {
+    border-bottom: 1px solid var(--divider);
+    padding-bottom: 20px;
+  }
+
+  .main-header .headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .summary-text {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .summary-text strong { color: var(--text); font-weight: 500; }
+
+  .section { display: flex; flex-direction: column; gap: 18px; }
+
+  .section-title {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--divider);
+  }
+
+  /* Experience */
+  .exp-item { display: flex; flex-direction: column; gap: 6px; }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .exp-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .exp-date {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+    background: rgba(200,169,110,0.1);
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .exp-company {
+    font-size: 12.5px;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .exp-bullets li {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+  }
+  .exp-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 11px;
+    top: 2px;
+  }
+
+  /* Projects */
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .project-card {
+    background: var(--sidebar);
+    border: 1px solid var(--divider);
+    border-radius: 10px;
+    padding: 16px 18px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .project-card:hover {
+    border-color: rgba(200,169,110,0.35);
+    transform: translateX(3px);
+  }
+
+  .project-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--white);
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .project-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .p-tag {
+    font-size: 10.5px;
+    color: var(--accent);
+    background: rgba(200,169,110,0.1);
+    border: 1px solid rgba(200,169,110,0.2);
+    padding: 2px 9px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  /* Services */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .service-card {
+    background: var(--sidebar);
+    border: 1px solid var(--divider);
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: border-color 0.2s;
+  }
+  .service-card:hover { border-color: rgba(200,169,110,0.35); }
+
+  .service-icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .service-name {
+    font-size: 13px;
+    color: var(--white);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .service-desc {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* Achievements */
+  .achievements-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .ach-card {
+    background: var(--sidebar);
+    border: 1px solid var(--divider);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .ach-card:hover { border-color: rgba(200,169,110,0.35); }
+
+  .ach-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .ach-label {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* Education */
+  .edu-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .edu-dot {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(200,169,110,0.12);
+    border: 1px solid rgba(200,169,110,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .edu-text .degree {
+    font-size: 14px;
+    color: var(--white);
+    font-weight: 600;
+  }
+  .edu-text .school {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  @media print {
+    body { padding: 0; background: #0f0f13; }
+    .resume { box-shadow: none; border-radius: 0; width: 100%; }
+  }
+
+  @media (max-width: 680px) {
+    .resume { grid-template-columns: 1fr; }
+    .sidebar { border-right: none; border-bottom: 1px solid var(--divider); }
+    .services-grid { grid-template-columns: 1fr; }
+    .achievements-row { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="resume">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="avatar-wrap">
+      <div class="avatar">R</div>
+      <div class="name-title">
+        <h1>Rohit</h1>
+        <div class="tagline">Web · AI Agents · Digital Marketing</div>
+      </div>
+    </div>
+
+    <div class="contact-block">
+      <div class="s-label">Contact</div>
+      <div class="contact-item">
+        <span class="icon">📞</span>
+        <span>+91 95364 01175</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">✉️</span>
+        <a href="mailto:mrrohitt22@gmail.com">mrrohitt22@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="icon">⌗</span>
+        <a href="https://github.com/mrrohitt22-a11y" target="_blank">github.com/mrrohitt22-a11y</a>
+      </div>
+      <div class="contact-item">
+        <span class="icon">📍</span>
+        <span>Ballabhgarh, Faridabad, Haryana</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-label">Core Skills</div>
+      <div class="tag-list">
+        <span class="tag">Web Development</span>
+        <span class="tag">Full Stack Apps</span>
+        <span class="tag">AI Agents</span>
+        <span class="tag">Digital Marketing</span>
+        <span class="tag">Meta Ads</span>
+        <span class="tag">Google Ads</span>
+        <span class="tag">SEO</span>
+        <span class="tag">Shopify</span>
+        <span class="tag">Content Strategy</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-label">AI & Tech Tools</div>
+      <div class="tool-item">ChatGPT & Claude</div>
+      <div class="tool-item">OmniDim (Voice AI)</div>
+      <div class="tool-item">ElevenLabs</div>
+      <div class="tool-item">Gemini</div>
+      <div class="tool-item">Canva AI</div>
+      <div class="tool-item">HTML / CSS / JS</div>
+      <div class="tool-item">Shopify</div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-label">Location</div>
+      <div class="tool-item">Available: Delhi NCR</div>
+      <div class="tool-item">Remote: Available</div>
+      <div class="tool-item">On-site: Faridabad</div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="main-header">
+      <div class="headline">Professional Summary</div>
+      <p class="summary-text">
+        A results-driven <strong>Web Developer, AI Agent Specialist & Digital Marketer</strong> based in Faridabad, with hands-on experience building websites, full-stack applications, and AI-powered automation tools. Skilled in <strong>Meta Ads, SEO, Google Ads</strong>, and Shopify — helping local businesses, coaching institutes, and startups <strong>grow their digital presence and generate real leads.</strong>
+      </p>
+    </div>
+
+    <!-- ACHIEVEMENTS -->
+    <div class="section">
+      <div class="section-title">Key Numbers</div>
+      <div class="achievements-row">
+        <div class="ach-card">
+          <div class="ach-number">10+</div>
+          <div class="ach-label">Websites Built & Delivered</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-number">5+</div>
+          <div class="ach-label">AI-Powered Apps & Agents</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-number">₹∞</div>
+          <div class="ach-label">Meta Ads for E-commerce Growth</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section">
+      <div class="section-title">Work Experience</div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Freelance Web Developer & AI Consultant</div>
+          <div class="exp-date">2023 – Present</div>
+        </div>
+        <div class="exp-company">Self-Employed · Ballabhgarh, Faridabad</div>
+        <ul class="exp-bullets">
+          <li>Built 10+ professional websites for coaching institutes, local businesses, and startups across Faridabad & Delhi NCR.</li>
+          <li>Designed and deployed AI Voice Agents (OmniDim) for automated lead follow-up and demo booking for coaching clients.</li>
+          <li>Ran Meta Ads campaigns for e-commerce businesses — managed ad creatives, targeting, and budget optimization.</li>
+          <li>Developed full-stack AI-powered web apps including an AI Resume Builder and a Text Humanizer tool.</li>
+          <li>Delivered end-to-end digital marketing: SEO, Google Ads, content strategy, and social media management.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Marketing & Operations Support</div>
+          <div class="exp-date">Prior Experience</div>
+        </div>
+        <div class="exp-company">IntelliHealth Solutions Pvt. Ltd. & Sage Metal Pvt. Ltd.</div>
+        <ul class="exp-bullets">
+          <li>Supported digital marketing and operational workflows in healthcare and industrial sectors.</li>
+          <li>Built foundational experience in business communication, client coordination, and marketing execution.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section">
+      <div class="section-title">Featured Projects</div>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-name">Lakshya Shorthand Typing Institute — Website</div>
+          <div class="project-desc">
+            Premium single-page website for a government exam coaching institute. Built with glassmorphism UI, typewriter animations, WhatsApp floating button, and fully mobile-responsive design targeting aspirants in Faridabad.
+          </div>
+          <div class="project-tags">
+            <span class="p-tag">HTML/CSS/JS</span>
+            <span class="p-tag">Glassmorphism</span>
+            <span class="p-tag">Responsive</span>
+            <span class="p-tag">Lead Gen</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-name">AI Resume Builder — Web App</div>
+          <div class="project-desc">
+            India-first AI-powered resume builder with ATS Score, Bullet Generator, and AI Fix features. Targeted at freshers and job seekers on Naukri/Internshala. Bilingual (Hindi-English), ₹99/month pricing, competitive positioning against tools like Rezi.ai.
+          </div>
+          <div class="project-tags">
+            <span class="p-tag">AI-Powered</span>
+            <span class="p-tag">Full Stack</span>
+            <span class="p-tag">India Market</span>
+            <span class="p-tag">SaaS</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-name">Gyan Shala Coaching Institute — AI Website</div>
+          <div class="project-desc">
+            Dark-themed premium website with integrated Voice AI Agent "Priya" (OmniDim) that auto-calls new enquiries, follows a 6-step conversation flow, and books free demo class visits — fully automated lead conversion system.
+          </div>
+          <div class="project-tags">
+            <span class="p-tag">Voice AI Agent</span>
+            <span class="p-tag">OmniDim</span>
+            <span class="p-tag">Webhook API</span>
+            <span class="p-tag">Lead Automation</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="section">
+      <div class="section-title">Services I Offer</div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🌐</div>
+          <div class="service-name">Website Development</div>
+          <div class="service-desc">Business websites, landing pages, coaching portals — custom built, fast, mobile-first.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <div class="service-name">AI Agent Setup</div>
+          <div class="service-desc">Voice AI agents, chatbots, and automation tools to convert leads 24/7 without manual effort.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📣</div>
+          <div class="service-name">Meta & Google Ads</div>
+          <div class="service-desc">Performance ad campaigns for e-commerce, local businesses, and lead generation.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📈</div>
+          <div class="service-name">Full Digital Marketing</div>
+          <div class="service-desc">SEO, content strategy, social media, and complete online presence management.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section">
+      <div class="section-title">Education</div>
+      <div class="edu-item">
+        <div class="edu-dot">🎓</div>
+        <div class="edu-text">
+          <div class="degree">12th Grade — Science / Commerce</div>
+          <div class="school">Haryana Board · Ballabhgarh, Faridabad</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>
